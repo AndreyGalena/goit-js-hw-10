@@ -8,6 +8,6 @@
 @import url('./reset.css');
 
 /* Sections style */
-@import url('./header.css');
 @import url('./maine.css');
-@import url('./footer.css');
+@import url('./timer.css');
+@import url('./snackbar.css');

@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    max-width: 200px;
+    padding: 3px 2px 3px 5px;
+    margin: 5px;
+}
+
+button {
+    max-width: 100px;
+    padding: 10px;
+    margin: 5px 5px 10px;
+}
+
+.timer {
+    max-width: 100px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    background-color: aquamarine;
+}
+
+.timer .field {
+    margin: 5px;
+}

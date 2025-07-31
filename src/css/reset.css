@@ -32,3 +32,16 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.back {
+  display: inline-block;
+  max-width: 100px;
+  padding: 10px;
+  background-color: aquamarine;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid rgb(126, 125, 125);
+  margin: 10px 10px 20px 5px;
+}
