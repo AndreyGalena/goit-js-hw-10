@@ -3,9 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Заглушка вместо фавикона -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snackbar</title>
-  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-Ci8Ya_Dk.css">
+    <!-- Тут style.css подключины через Js в "2-snackbar.js" -->
+  <script type="module" crossorigin src="/goit-js-hw-10/2-snackbar.js"></script>
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-CqDy3-nh.js">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CUZofXIC.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-CSVkmVPD.css">
 </head>
 
 <body>
@@ -14,17 +21,19 @@
     <form class="form">
         <label>
             Delay (ms)
-            <input type="number" name="delay" required />
+            <input type="number" name="delay" placeholder="5000" required />
         </label>
 
         <fieldset>
             <legend>State</legend>
             <label>
                 <input type="radio" name="state" value="fulfilled" required />
+                <span class="custom-radio"></span>
                 Fulfilled
             </label>
             <label>
                 <input type="radio" name="state" value="rejected" required />
+                <span class="custom-radio"></span>
                 Rejected
             </label>
         </fieldset>
