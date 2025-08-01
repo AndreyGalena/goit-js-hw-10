@@ -1,6 +1,7 @@
 .input-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     padding: 10px 5px 10px 5px;
 }
 
@@ -59,6 +60,8 @@
 /* -------------------------------------------------- */
 .timer {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 25px 5px 10px 5px;
 }
 
