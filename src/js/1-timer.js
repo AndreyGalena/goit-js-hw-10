@@ -21,16 +21,21 @@ import "izitoast/dist/css/iziToast.min.css";
 iziToast.info({
     title: 'Информация',
     message: 'Выбери дату для запуска обратного отщёта.',
-    position: 'topCenter',
+    messageColor: 'black',
+    position: 'center',
     timeout: 5000,
     progressBar: true,
-    close: true
+    close: true,
+    backgroundColor: 'aquamarine',
 });
 
 
+const input = document.getElementById('datetime-picker');
 const btnStart = document.querySelector('button[data-start]');
 let userSelectedDate = null;
 let countdownInterval = null;
+// кнопка не активная.
+btnStart.disabled = true;
 
 
 function convertMs(ms) {
@@ -52,7 +57,6 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
 }
 
-
 flatpickr("#datetime-picker", {
     enableTime: true,
     dateFormat: "d.m.Y   H:i",
@@ -66,10 +70,21 @@ flatpickr("#datetime-picker", {
         userSelectedDate = selectedDates[0];
 
         if (userSelectedDate <= new Date()) {
-            window.alert("Please choose a date in the future");
+            iziToast.success({
+                title: 'Внимание',
+                message: 'Пожалуйста, выберите дату в будущем.!',
+                messageColor: 'black',
+                position: 'center',
+                timeout: 4000, // время отображения в мс
+                progressBar: true,
+                close: true,
+                backgroundColor: 'aquamarine',
+            });
             // кнопка не активная.
             btnStart.disabled = true;
         } else {
+            // input активен
+            input.disabled = false;
             // кнопка активная.
             btnStart.disabled = false;
         }
@@ -82,14 +97,18 @@ btnStart.addEventListener('click', () => {
         iziToast.warning({
             title: 'Внимание',
             message: 'Сначала выберите дату!',
-            position: 'topCenter',
+            messageColor: 'black',
+            position: 'center',
             timeout: 3000, // время отображения в мс
             progressBar: true,
-            close: true
+            close: true,
+            backgroundColor: 'aquamarine',
         });
         return;
     }
 
+    // input не активен
+    input.disabled = true;
     btnStart.disabled = true; // блокируем кнопку после запуска
 
     countdownInterval = setInterval(() => {
@@ -102,11 +121,15 @@ btnStart.addEventListener('click', () => {
             iziToast.success({
                 title: 'Внимание',
                 message: 'Время вышло!',
-                position: 'topCenter',
+                messageColor: 'black',
+                position: 'center',
                 timeout: 4000, // время отображения в мс
                 progressBar: true,
-                close: true
+                close: true,
+                backgroundColor: 'aquamarine',
             });
+            // input активен
+            input.disabled = false;
             return;
         }
 

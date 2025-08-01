@@ -1,5 +1,91 @@
 .form {
     display: flex;
     flex-direction: column;
-    max-width: 200px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 15px white;
+    padding: 30px;
+    background-color: aquamarine;
+}
+
+.form label {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.form label input[name="delay"] {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 3px 2px 3px 5px;
+    margin-left: 10px;
+    transition: box-shadow 1s ease, transform .5s ease;
+}
+
+.form label input[name="delay"]:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px rgb(10, 190, 6);
+}
+
+/* ---------------------------------------------- */
+
+fieldset {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 5px;
+}
+
+fieldset label {
+    display: flex;
+    align-items: center;
+}
+
+fieldset label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+fieldset label .custom-radio {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-color: white;
+    transition: background-color .7s ease, transform .2s ease;
+}
+
+fieldset label .custom-radio:hover {
+    transform: scale(1.2);
+    background-color: green;
+    cursor: pointer;
+}
+
+fieldset label input[type="radio"]:checked+.custom-radio {
+    background-color: black;
+}
+
+/* -------------------------------------------------------------- */
+.form button[type="submit"] {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid rgb(126, 125, 125);
+    box-shadow: 5px 5px 10px black;
+    padding: 5px 10px;
+    background-color: white;
+    transition: all .3s ease;
+}
+
+.form button[type="submit"]:hover {
+    box-shadow: 0px 0px 15px green;
+    transform: scale(1.02);
+    background-color: rgb(230, 228, 228);
 }
