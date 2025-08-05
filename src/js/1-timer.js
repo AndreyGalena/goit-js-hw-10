@@ -21,12 +21,12 @@ import "izitoast/dist/css/iziToast.min.css";
 iziToast.info({
     title: 'Информация',
     message: 'Выбери дату для запуска обратного отщёта.',
-    messageColor: 'black',
+    messageColor: 'white',
     position: 'center',
     timeout: 5000,
     progressBar: true,
     close: true,
-    backgroundColor: 'aquamarine',
+    backgroundColor: "rgb(0 140 255)"
 });
 
 
@@ -75,18 +75,19 @@ flatpickr("#datetime-picker", {
             iziToast.success({
                 title: 'Внимание',
                 message: 'Пожалуйста, выберите дату в будущем.!',
-                messageColor: 'black',
+                messageColor: 'red',
                 position: 'center',
                 timeout: 4000, // время отображения в мс
                 progressBar: true,
                 close: true,
-                backgroundColor: 'aquamarine',
+                backgroundColor: 'rgb(0 140 255)',
             });
         } else {
             // input активен
             input.disabled = false;
             // кнопка активная.
             btnStart.disabled = false;
+            btnStart.classList.replace("notActive", "button");
         }
     },
 });
@@ -97,12 +98,12 @@ btnStart.addEventListener('click', () => {
         iziToast.warning({
             title: 'Внимание',
             message: 'Сначала выберите дату!',
-            messageColor: 'black',
+            messageColor: 'red',
             position: 'center',
             timeout: 3000, // время отображения в мс
             progressBar: true,
             close: true,
-            backgroundColor: 'aquamarine',
+            backgroundColor: 'rgb(0 140 255)',
         });
         return;
     }
@@ -110,6 +111,7 @@ btnStart.addEventListener('click', () => {
     // input не активен
     input.disabled = true;
     btnStart.disabled = true; // блокируем кнопку после запуска
+    btnStart.classList.replace("button", "notActive");
 
     countdownInterval = setInterval(() => {
         const now = new Date();
@@ -121,12 +123,12 @@ btnStart.addEventListener('click', () => {
             iziToast.success({
                 title: 'Внимание',
                 message: 'Время вышло!',
-                messageColor: 'black',
+                messageColor: 'white',
                 position: 'center',
                 timeout: 4000, // время отображения в мс
                 progressBar: true,
                 close: true,
-                backgroundColor: 'aquamarine',
+                backgroundColor: 'rgb(0 140 255)',
             });
             // input активен
             input.disabled = false;

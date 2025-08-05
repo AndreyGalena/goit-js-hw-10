@@ -5,17 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-    <link rel="stylesheet" href="./css/styles.css" />
     <!-- Заглушка вместо фавикона -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
+    <style>
+        .back {
+            border: 1px solid rgb(4, 100, 178);
+            background-color: rgb(0 140 255);
+        }
+
+        .back:hover {
+            color: white;
+            background-color: rgb(0, 100, 200);
+        }
+    </style>
     <a class="back" href="./index.html">Go main</a>
 
     <div class="input-row">
         <input type="text" id="datetime-picker" title="Выберите дату и время">
-        <button class="btnStandart" type="button" data-start>Start</button>
+        <button class="notActive" type="button" data-start>
+            <div class="shadow"></div>
+            <span>Start</span>
+        </button>
     </div>
 
 
