@@ -60,6 +60,8 @@ function convertMs(ms) {
 flatpickr("#datetime-picker", {
     enableTime: true,
     dateFormat: "d.m.Y   H:i",
+    // отк. мобильную версию.
+    disableMobile: true,
     locale: Russian, // язык интерфейса
     // locale: German, // переключение на немецкий
 
@@ -80,8 +82,6 @@ flatpickr("#datetime-picker", {
                 close: true,
                 backgroundColor: 'aquamarine',
             });
-            // кнопка не активная.
-            btnStart.disabled = true;
         } else {
             // input активен
             input.disabled = false;
