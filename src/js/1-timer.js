@@ -68,49 +68,37 @@ flatpickr("#datetime-picker", {
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates) {
+    onClose(selectedDates, _, instance) {
         userSelectedDate = selectedDates[0];
 
-        if (userSelectedDate <= new Date()) {
-            iziToast.success({
-                title: 'Внимание',
-                message: 'Пожалуйста, выберите дату в будущем.!',
+        //if(календарь открыт   или както попала не коректная дата     или дата находится в прошлом)
+        if (instance.isOpen || !(userSelectedDate instanceof Date) || userSelectedDate <= new Date()) {
+            iziToast.warning({
+                title: 'Некорректная дата',
+                message: 'Выберите дату в будущем!',
                 messageColor: 'red',
                 position: 'center',
-                timeout: 4000, // время отображения в мс
+                timeout: 4000,
                 progressBar: true,
                 close: true,
                 backgroundColor: 'rgb(0 140 255)',
             });
-        } else {
-            // input активен
-            input.disabled = false;
-            // кнопка активная.
-            btnStart.disabled = false;
-            btnStart.classList.replace("notActive", "button");
+            return;
         }
-    },
+        // input активен
+        input.disabled = false;
+        // кнопка активная.
+        btnStart.disabled = false;
+        btnStart.classList.replace("notActive", "button");
+    }
 });
 
 
 btnStart.addEventListener('click', () => {
-    if (!userSelectedDate) {
-        iziToast.warning({
-            title: 'Внимание',
-            message: 'Сначала выберите дату!',
-            messageColor: 'red',
-            position: 'center',
-            timeout: 3000, // время отображения в мс
-            progressBar: true,
-            close: true,
-            backgroundColor: 'rgb(0 140 255)',
-        });
-        return;
-    }
-
     // input не активен
     input.disabled = true;
-    btnStart.disabled = true; // блокируем кнопку после запуска
+    // блокируем кнопку после запуска
+    btnStart.disabled = true;
     btnStart.classList.replace("button", "notActive");
 
     countdownInterval = setInterval(() => {
@@ -125,7 +113,7 @@ btnStart.addEventListener('click', () => {
                 message: 'Время вышло!',
                 messageColor: 'white',
                 position: 'center',
-                timeout: 4000, // время отображения в мс
+                timeout: 4000,
                 progressBar: true,
                 close: true,
                 backgroundColor: 'rgb(0 140 255)',
@@ -146,8 +134,6 @@ function updateTimerDisplay({ days, hours, minutes, seconds }) {
     document.querySelector('[data-minutes]').textContent = String(minutes).padStart(2, '0');
     document.querySelector('[data-seconds]').textContent = String(seconds).padStart(2, '0');
 }
-
-
 
 
 // Flatpickr поддерживает множество языков: ru, fr, de, es, zh, и другие.
